@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">NewsApp</string>
+    <string name="detail_transition_name" translatable="false">ST-Detail-Image</string>
+    <string name="content">
+        You’re invited Home For The Holidays. From November 5 through December 31, STORY will transform into a home for
+        everyone on your list. More than 2,000 gifts from 300 small businesses and brands (plus exclusive gift items)
+        line the walls across four themed spaces: a champagne lounge for her, a library for him, a playroom […]
+    </string>
+    <string name="url_to_link"><u>Read More</u></string>
+</resources>
