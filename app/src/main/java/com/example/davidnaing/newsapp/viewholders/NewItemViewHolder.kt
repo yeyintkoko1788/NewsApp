@@ -1,6 +1,5 @@
 package com.example.davidnaing.newsapp.viewholders
 
-import android.support.v7.view.menu.MenuView
 import android.view.View
 import com.bumptech.glide.Glide
 import com.example.davidnaing.newsapp.data.VOs.NewsVO

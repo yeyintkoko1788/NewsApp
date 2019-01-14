@@ -9,6 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.support.customtabs.*
+import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.davidnaing.newsapp.R
 import com.example.davidnaing.newsapp.data.VOs.NewsVO
@@ -31,27 +32,32 @@ class NewsDetailActivity :BaseActivity(), NewsDetailView{
         customTabsIntent.launchUrl(this, Uri.parse(url))
     }
 
-    override fun displayNewsDetail(newsVO: NewsVO) {
-        var d: Date? = null
-        try
-        {
-            d = sdf.parse(newsVO.publishedAt)
+    override fun displayNewsDetail(newsVO: NewsVO?) {
+        if(newsVO != null){
+            var d: Date? = null
+            try
+            {
+                d = sdf.parse(newsVO.publishedAt)
+            }
+            catch (e: ParseException)
+            {
+                e.printStackTrace()
+            }
+            var sourceVO :SourceVO = newsVO.source!!
+            val formattedTime = output.format(d)
+            tv_author.text = newsVO.author
+            tv_content.text = newsVO.cont
+            tv_date.text = formattedTime
+            tv_title.text = newsVO.title
+            tv_source.text = sourceVO.name
+            url = newsVO.url
+            Glide.with(article_img)
+                .load(newsVO.urlToImage)
+                .into(article_img)
+        }else{
+            Toast.makeText(this,"News Detail Not Available",Toast.LENGTH_SHORT).show()
         }
-        catch (e: ParseException)
-        {
-            e.printStackTrace()
-        }
-        var sourceVO :SourceVO = newsVO.source!!
-        val formattedTime = output.format(d)
-        tv_author.text = newsVO.author
-        tv_content.text = newsVO.cont
-        tv_date.text = formattedTime
-        tv_title.text = newsVO.title
-        tv_source.text = sourceVO.name
-        url = newsVO.url
-        Glide.with(article_img)
-            .load(newsVO.urlToImage)
-            .into(article_img)
+
     }
 
     override fun setUpContents(savedInstanceState: Bundle?) {

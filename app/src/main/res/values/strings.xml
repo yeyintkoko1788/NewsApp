@@ -7,4 +7,6 @@
         line the walls across four themed spaces: a champagne lounge for her, a library for him, a playroom […]
     </string>
     <string name="url_to_link"><u>Read More</u></string>
+    <string name="no_news_to_display">No News To Display</string>
+    <string name="refresh">Refresh</string>
 </resources>
