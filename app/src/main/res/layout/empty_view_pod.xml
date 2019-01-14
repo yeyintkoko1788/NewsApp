@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.yammobots.paradiso.components.EmptyViewPod xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/empty_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/ivEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tvEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivEmpty"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="@string/no_news_to_display" />
+
+    <Button
+        android:id="@+id/btn_refresh_empty"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEmpty"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="@string/refresh" />
+
+</com.yammobots.paradiso.components.EmptyViewPod>
