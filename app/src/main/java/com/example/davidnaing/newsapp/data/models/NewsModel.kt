@@ -31,14 +31,15 @@ class NewsModel private constructor(context: Context) : BaseModel(context){
     }
 
     private var newsListData: MutableLiveData<ArrayList<NewsVO>>? = null
-    private var mNewsMap: HashMap<String, NewsVO>? = null
+    private var mNewsMap: HashMap<String, NewsVO>? = HashMap()
+    private var mEntertainmentMap : HashMap<String, NewsVO>? = HashMap()
 
-    fun startLoadingNewsData(countryID : String, categoryID : String, apiKey :String,newsListLD: MutableLiveData<List<NewsVO>>,
+    fun startLoadingBusinessNewsData(countryID : String, apiKey :String, page : Int,categoryID: String,newsListLD: MutableLiveData<List<NewsVO>>,
                              errorLD: MutableLiveData<String>){
 
         newsListData = MutableLiveData()
-        mNewsMap = HashMap()
-        val observableObjects = mTheAPI.getNews(countryID = countryID, categoryID = categoryID, apiKey = apiKey)
+        //mNewsMap = HashMap()
+        val observableObjects = mTheAPI.getNews(countryID = countryID, categoryID = categoryID, apiKey = apiKey, page = page)
         observableObjects.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
@@ -77,8 +78,19 @@ class NewsModel private constructor(context: Context) : BaseModel(context){
         return newsListData
     }
 
-    fun getNewsById(newsId : String) : NewsVO{
-        return mNewsMap!![newsId]!!
+    fun getNewsById(newsId : String) : NewsVO?{
+        return if(mNewsMap!![newsId] != null){
+            mNewsMap!![newsId]!!
+        }else{
+            null
+        }
     }
+    /*fun getEntertainmentById(newsId : String) : NewsVO? {
+        return if(mNewsMap!![newsId] != null){
+            mNewsMap!![newsId]!!
+        }else{
+            null
+        }
+    }*/
 
 }

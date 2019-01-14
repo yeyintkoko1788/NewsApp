@@ -11,8 +11,7 @@ import com.example.davidnaing.newsapp.viewholders.NewItemViewHolder
 
 class NewsRVAdapter (context : Context, private var delegate : NewListDelegate) : BasedRecyclerAdapter<NewItemViewHolder,NewsVO>(context){
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): BaseViewHolder<NewsVO> {
-        val view = LayoutInflater.from(p0.context).inflate(R.layout.news_list, p0, false)
-        return NewItemViewHolder(view, delegate)
+        return NewItemViewHolder(LayoutInflater.from(p0.context).inflate(R.layout.news_list, p0, false), delegate)
     }
 
 

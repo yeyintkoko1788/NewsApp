@@ -9,5 +9,6 @@ interface NewsAPI {
     @GET("/v2/top-headlines ")
     fun getNews(@Query("country") countryID : String,
                 @Query("category") categoryID : String,
-                @Query("apiKey") apiKey: String) : Observable<MainVO>
+                @Query("apiKey") apiKey: String,
+                @Query("page") page: Int) : Observable<MainVO>
 }
